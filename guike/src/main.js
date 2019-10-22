@@ -14,7 +14,8 @@ import "mint-ui/lib/style.css"
 //3将mint-ui注册vue实例
 Vue.use(MintUI)
 
-
+import { Swipe, SwipeItem } from 'vant'
+Vue.use(Swipe).use(SwipeItem)
 
 /* eslint-disable no-new */
 new Vue({

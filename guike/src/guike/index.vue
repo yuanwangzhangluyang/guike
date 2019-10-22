@@ -2,9 +2,7 @@
     <div class="home">
         <div class="top">
             <div class="city-select">
-                <a href="">
-                    <span>郑州市</span>
-                </a>
+                <span>郑州市</span>
                 <img style="width:9px;height:5px;vertical-align: middle;" src="../assets/index/xuanze.png" alt="">
             </div>
             <div class="search">
@@ -21,31 +19,23 @@
             </mt-swipe>
         </div>
         <!-- 四个按钮 -->
-        <div class="content qingchu" style="padding: 20px 0;background:#fff;line-height:22px">
-            <a href="">
-                <div class="nav">
-                    <img src="../assets/index/Group 7@2x.png" alt="">
-                    <p>整租</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="nav">
-                    <img src="../assets/index/Group 15@2x.png" alt="">
-                    <p>合租</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="nav">
-                    <img src="../assets/index/Group 8@2x.png" alt="">
-                    <p>短租</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="nav">
-                    <img src="../assets/index/Group 4@2x.png" alt="">
-                    <p>委托找房</p>
-                </div>
-            </a>
+        <div class="content" style="padding: 20px 0;background:#fff;line-height:22px">
+            <div class="nav" @click="tyu">
+                <img src="../assets/index/Group 7@2x.png" alt="">
+                <p>整租</p>
+            </div>
+            <div class="nav">
+                <img src="../assets/index/Group 15@2x.png" alt="">
+                <p>合租</p>
+            </div>
+            <div class="nav">
+                <img src="../assets/index/Group 8@2x.png" alt="">
+                <p>短租</p>
+            </div>
+            <div class="nav">
+                <img src="../assets/index/Group 4@2x.png" alt="">
+                <p>委托找房</p>
+            </div>
         </div>
         <!-- 白领公寓 -->
         <p class="biaoti">
@@ -64,7 +54,7 @@
             </mt-swipe-item>
         </mt-swipe>
         <!-- 为什么选择我们 -->
-        <div style="padding-top:10px;margin-bottom: 10px;background-color:#fff;width:100%;float:left">
+        <div style="padding-top:10px;margin-bottom: 10px;background-color:#fff;width:100%;">
             <p class="biaoti" style="padding-left:10px;">为什么选择我们</p>
             <div class="nav-1">
                 <img src="../assets/index/house.png" alt="">
@@ -101,7 +91,7 @@
         </div>
         <!-- 广告位 -->
         <div style="width:94%;margin-left:3%;padding-bottom:5px;">
-            <img style="width:100%;border-radius:5px;" src="../assets/index/20191018203600.jpg" alt="">
+            <img style="width:100%;border-radius:10%;padding-top:10px" src="../assets/index/shushi.jpg" alt="">
         </div>
         <!-- 花式生活 -->
         <p class="biaoti">
@@ -122,9 +112,7 @@
         <!-- 底部内容 -->
         <div class="dibuneirong">
             <div>
-                <a href="">
-                    <p style="margin-top:50px;">关于我们</p>
-                </a>
+                <p style="margin-top:50px;">关于我们</p>
                 <p style="font-size:12px">电脑版 | 公众号 | 下载APP</p>
                 <p>服务热线: 0371-1234567</p>
                 <p style="margin-bottom:50px;">豫ICP报备号000000号-2</p>
@@ -156,33 +144,16 @@ export default {
         }
       ]
     };
+  },
+  methods:{
+      tyu(){
+          this.$router.push("/fangjianCell")
+      }
   }
 };
 </script>
 
 <style scoped>
-body {
-  max-height: 750px;
-  margin: 0 auto;
-}
-.qingchu:after {
-  display: block;
-  content: "";
-  clear: both;
-}
-* {
-  font-family: "微软雅黑";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-/* .home {
-  background: #efeff4;
-} */
 .top {
   height: 46px;
   background: #ffffff;
@@ -190,6 +161,7 @@ a {
   padding-top: 9px;
   padding-left: 5%;
   padding-right: 5%;
+  box-sizing: border-box;
 }
 .city-select {
   height: 100%;
@@ -259,7 +231,6 @@ a {
   color: #646464;
 }
 /* 白领公寓 */
-
 .biaoti {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -267,9 +238,8 @@ a {
   text-align: left;
   font-size: 16px;
   color: #3a3a3a;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  padding-bottom: 10px;
+  margin-bottom: 10px; 
+  padding: 10px 5px;
   border-bottom: 1px solid #c8c7cc;
 }
 .biaoti-hou {
@@ -277,31 +247,6 @@ a {
   color: #666666;
   margin-left: 10px;
   overflow: hidden;
-}
-.gengduo {
-  float: right;
-  font-size: 12px;
-  color: #666666;
-  text-align: center;
-}
-/* 图框1 */
-.tukuang-1 {
-  width: 100%;
-  z-index: 1;
-}
-.tukuang-group {
-  font-size: 0;
-  position: relative;
-  transition: all 0s linear;
-  white-space: nowrap;
-}
-.tukuang-group div {
-  font-size: 14px;
-  position: relative;
-  display: inline-block;
-  height: 100%;
-  vertical-align: top;
-  white-space: normal;
 }
 /* 为什么选择我们 */
 .nav-1 {
