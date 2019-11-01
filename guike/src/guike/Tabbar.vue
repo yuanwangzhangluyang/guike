@@ -1,7 +1,7 @@
 <template>
     <div id="tabbar">
         <mt-tab-container class="page-tabbar-container" v-model="active">
-            <mt-tab-container-item id="message"><index></index>
+            <mt-tab-container-item id="message"><index v-on:child-id="listen_uid"></index>
             </mt-tab-container-item>
             <mt-tab-container-item id="shoucang"><shoucang></shoucang>
             </mt-tab-container-item>
@@ -50,15 +50,16 @@ import mine from "./mine.vue";
 export default {
   data() {
     return {
+       //list:gongyujson,
       //面板中显示子组件id
-      active: "message",
+      active: "mine",
       //创建数组保存图片焦点状态
       currentIndex: [
-        { isSelect: true },
+        { isSelect: false},
         { isSelect: false },
         { isSelect: false },
         { isSelect: false },
-        { isSelect: false }
+        { isSelect: true }
       ]
     };
   },
@@ -78,12 +79,18 @@ export default {
       for (var i = 0; i < this.currentIndex.length; i++) {
         //2:判断如果循环下标与n相等 20
         if (n == i) {
-          //3:当前下标元素true 10:22
+          //3:当前下标元素true 
           this.currentIndex[i].isSelect = true;
         } else {
           //4:其它元素修改false
           this.currentIndex[i].isSelect = false;
         }
+      }
+    },
+    listen_uid(uid){
+      if(uid!=undefined){
+        this.changeState(4);
+        this.active="mine"
       }
     }
   }

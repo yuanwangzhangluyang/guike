@@ -1,13 +1,13 @@
 <template>
     <div class="home">
         <div class="top">
-            <div class="city-select">
-                <span>郑州市</span>
-                <img style="width:9px;height:5px;vertical-align: middle;" src="../assets/index/xuanze.png" alt="">
-            </div>
-            <div class="search">
+                <div class="city-select" @click="chengshi">
+                    <span>郑州市</span>
+                    <img style="width:9px;height:5px;vertical-align: middle;" src="../assets/index/xuanze.png" alt="">
+                </div>
+            <div class="search-class">
                 <img src="../assets/index/sousuo.png" alt="">
-                <input type="search" placeholder="搜索你想住的区域或地址">
+                <input type="text" placeholder="搜索你想住的区域或地址">
             </div>
         </div>
         <!-- 轮播图 -->
@@ -24,11 +24,11 @@
                 <img src="../assets/index/Group 7@2x.png" alt="">
                 <p>整租</p>
             </div>
-            <div class="nav">
+            <div class="nav" @click="tyu">
                 <img src="../assets/index/Group 15@2x.png" alt="">
                 <p>合租</p>
             </div>
-            <div class="nav">
+            <div class="nav" @click="tyu">
                 <img src="../assets/index/Group 8@2x.png" alt="">
                 <p>短租</p>
             </div>
@@ -115,16 +115,16 @@
                 <p style="margin-top:50px;">关于我们</p>
                 <p style="font-size:12px">电脑版 | 公众号 | 下载APP</p>
                 <p>服务热线: 0371-1234567</p>
-                <p style="margin-bottom:50px;">豫ICP报备号000000号-2</p>
+                <p style="margin-bottom:60px;">豫ICP报备号000000号-2</p>
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-  name: "slider",
   data() {
     return {
+      name: "slider",
       imgs: [
         {
           index: 1,
@@ -145,12 +145,15 @@ export default {
       ]
     };
   },
-  methods:{
-      tyu(){
-          this.$router.push("/fangjianCell")
-      }
+  methods: {
+    tyu(){
+      this.$router.push("/fangjianCell");
+    },
+    chengshi(){
+        this.$router.push("/city");
+    }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -180,14 +183,14 @@ export default {
   margin-right: 5px;
 }
 /* 头部 搜索框 */
-.search {
+.search-class {
   height: 28px;
   width: 80%;
   float: right;
   clear: none;
   position: relative;
 }
-.search > input {
+.search-class > input {
   height: 28px;
   line-height: 28px;
   padding-left: 30px;
@@ -199,7 +202,7 @@ export default {
   width: 100%;
   outline: 0;
 }
-.search > img {
+.search-class > img {
   width: 15px;
   position: absolute;
   top: 7px;
@@ -238,7 +241,7 @@ export default {
   text-align: left;
   font-size: 16px;
   color: #3a3a3a;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   padding: 10px 5px;
   border-bottom: 1px solid #c8c7cc;
 }

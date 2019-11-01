@@ -1,75 +1,57 @@
 <template>
-    <div>
-        <mt-header title="房间列表">
-            <router-link to="/" slot="left">
-                <mt-button icon="back">返回</mt-button>
-            </router-link>
-            <mt-button icon="more" slot="right"></mt-button>
-        </mt-header>
-        <div class="select-cell">
-            <span>区域</span>
-            <span>整租</span>
-            <span>租金</span>
-            <span>户型</span>
-        </div>
-
-        <ul @click="xiangqing">
-            <li class="fangjian">
-                <img class="zhaopian" src="../../assets/gongyu/01-jingkai.jpg" alt="">
-                <div class="xiangxi">
-                    <h4>别树一阁</h4>
-                    <p class="xiangxi-1">第八大街与经北六路东400米路北</p>
-                    <p class="fangjian-price">1200-1800元/月</p>
-                </div>
-            </li>
-            <li class="fangjian">
-                <img class="zhaopian" src="../../assets/gongyu/01-jingkai.jpg" alt="">
-                <div class="xiangxi">
-                    <h4>藏宝海湾</h4>
-                    <p class="xiangxi-1">第八大街与经北六路东400米路北</p>
-                    <p class="fangjian-price">1200-1800元/月</p>
-                </div>
-            </li>
-            <li class="fangjian">
-                <img class="zhaopian" src="../../assets/gongyu/01-jingkai.jpg" alt="">
-                <div class="xiangxi">
-                    <h4>东窗思雨</h4>
-                    <p class="xiangxi-1">第八大街与经北六路东400米路北</p>
-                    <p class="fangjian-price">1200-1800元/月</p>
-                </div>
-            </li>
-            <li class="fangjian">
-                <img class="zhaopian" src="../../assets/gongyu/01-jingkai.jpg" alt="">
-                <div class="xiangxi">
-                    <h4>伐木累</h4>
-                    <p class="xiangxi-1">第八大街与经北六路东400米路北</p>
-                    <p class="fangjian-price">1200-1800元/月</p>
-                </div>
-            </li>
-            <li class="fangjian">
-                <img class="zhaopian" src="../../assets/gongyu/01-jingkai.jpg" alt="">
-                <div class="xiangxi">
-                    <h4>旮旯小屋</h4>
-                    <p class="xiangxi-1">第八大街与经北六路东400米路北</p>
-                    <p class="fangjian-price">1200-1800元/月</p>
-                </div>
-            </li>
-        </ul>
+  <div>
+    <mt-header title="房间列表">
+      <router-link to="/" slot="left">
+        <mt-button icon="back">返回</mt-button>
+      </router-link>
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <div class="select-cell">
+      <span>区域</span>
+      <span>整租</span>
+      <span>租金</span>
+      <span>户型</span>
     </div>
+    <div v-for="(item,i) of list" :key="i">
+      <div class="fangjian" @click="xiangqing">
+        <img class="zhaopian" :src="'http://127.0.0.1:4000/'+item.img" alt="">
+        <div class="xiangxi">
+          <h4>{{item.title}}</h4>
+          <p class="xiangxi-1">{{item.address}}</p>
+          <p class="fangjian-price">{{item.price}}元/月</p>
+        </div>
+      </div>
+    </div>
+    <mt-button class="mbtn-top" type="primary" size="large" @click="loadMore">加载更多</mt-button> 
+  </div>
 </template>
 <script>
 export default {
-    data() {
+  data() {
     return {
-      show: false
-    }
+      show: false,
+      list: [],
+      pno: 0
+    };
+  },
+  created() {
+    this.loadMore();
   },
   methods: {
     xiangqing() {
       this.$router.push("/detail");
     },
-     showPopup() {
-      this.show = true;
+    loadMore() {
+      var url = "gongyu";
+      this.pno++;
+      var obj = { pno: this.pno };
+      this.axios.get(url, { params: obj }).then(res => {
+        //console.log(res)
+        //concat
+        //this.list=res.data.data
+        var rows = this.list.concat(res.data.data);
+        this.list = rows;
+      });
     }
   }
 };
@@ -91,9 +73,9 @@ export default {
   position: relative;
 }
 .van-popup--top {
-    top: 96px;
-    left: 0;
-    width: 100%;
+  top: 96px;
+  left: 0;
+  width: 100%;
 }
 /* 房间列表 */
 .fangjian {
@@ -131,5 +113,9 @@ export default {
   color: #ed8117;
   margin: 8px 0;
 }
+.mbtn-top{
+     margin-bottom:10px;
+     background-color:#ed8117;
+ }
 </style>
 
